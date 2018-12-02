@@ -28,7 +28,7 @@ module.exports = function(stream, options) {
   stream.write(header);
 
   if (ignore_files) {
-    ignore_folders = ignore
+    ignore_folders = ignore_files
       .filter(name => path.extname(name) !== '.html')
       .map(name => new RegExp(`^${name}`));
   }
