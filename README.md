@@ -1,54 +1,45 @@
 # sitemap-static
 
-[![CircleCI](https://circleci.com/gh/tmcw/sitemap-static.svg?style=svg)](https://circleci.com/gh/tmcw/sitemap-static)
-[![Greenkeeper badge](https://badges.greenkeeper.io/tmcw/sitemap-static.svg)](https://greenkeeper.io/)
+Generate a sitemap for a static website based on files on disk.
 
-Make a sitemap for a static website based on files on disk
+This is a fork of [sitemap-static](https://github.com/tmcw/sitemap-static/) that
+adds several features and removes certain existing functionality.
 
-## install
+### install
 
-    npm install -g sitemap-static
+`npm install --save @astronomersiva/sitemap-static`
 
-## usage
-
-Use in the root directory of the files on the site. This will only add
-files with `.html` extensions to the sitemap.
-
-    sitemap-static --prefix=http://foo.bar/foo/ . > sitemap.xml
-
-## library API
+### Usage
 
 ```javascript
-var generateSitemap = require('sitemap-static');
-var fs = require('fs');
+let generateSitemap = require('sitemap-static');
+let fs = require('fs');
 
-var writer = fs.createWriteStream('/path/to/your/sitemap.xml');
+let writer = fs.createWriteStream('/path/to/your/sitemap.xml');
 
 generateSitemap(writer, {
-    findRoot: '.',
-    ignoreFile: '',
-    prefix: 'http://somesi.te/',
-    pretty: false
+  findRoot: '.',
+  ignoreFiles: [/ ** An array of files to ignore in the sitemap */],
+  prefix: 'https://www.sivasubramanyam.me/',
+  pretty: false
 })
 ```
 
-## Ignore File
+### findRoot
 
-Added in v0.0.1 you can pass the name of a json file to load. File file needs to be
-in your current working directory and should be an array of file names (without the / at the front)
-that you want ignored.  You can ignore entire directories by leaving off the .html.
-Example JSON:
+The base directory whose contents you want a sitemap for.
 
-	[
-		"ignore-me.html",
-		"ignore-everything-in-me/"
-	]
+### Ignore Files
 
-Example Command:
+An array of files and directories to ignore in the sitemap. Example,
+```javascript
+[
+  'ignore-me.html',
+  'ignore-everything-in-me/'
+]
+```
 
-	sitemap-static --ignore-file=ignore.json --prefix=http://foo.bar/foo/ . > sitemap.xml
-
-## Pretty URLs
+### Pretty URLs
 
 If you pass `--pretty` to the CLI (or `pretty: true` to the JS API), `sitemap-static` will output pretty URLs rather than the whole path to each file. For example:
 
@@ -58,7 +49,3 @@ If you pass `--pretty` to the CLI (or `pretty: true` to the JS API), `sitemap-st
 | `http://www.example.com/about.html` | `http://www.example.com/about` |
 | `http://www.example.com/author/index.html` | `http://www.example.com/author` |
 | `http://www.example.com/author/main.html` | `http://www.example.com/author/main` |
-
-Example Command:
-
-	sitemap-static --prefix=http://foo.bar/foo/ --pretty . > sitemap.xml

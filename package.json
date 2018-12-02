@@ -1,33 +1,26 @@
 {
-  "name": "sitemap-static",
-  "version": "0.4.4",
-  "description": "generate a sitemap for a static website",
+  "name": "@astronomersiva/sitemap-static",
+  "version": "1.0.0",
+  "description": "generate a sitemap for a static website based on local files",
   "main": "index.js",
   "scripts": {
-    "test": "tap --coverage test.js",
-    "release": "standard-version"
-  },
-  "files": [
-    "cli.js"
-  ],
-  "bin": {
-    "sitemap-static": "cli.js"
+    "test": "tap --coverage test.js"
   },
   "repository": {
     "type": "git",
-    "url": "git@github.com:tmcw/sitemap-static.git"
+    "url": "git@github.com:astronomersiva/sitemap-static.git"
   },
   "keywords": [
     "sitemap",
     "static",
     "generate"
   ],
-  "author": "Tom MacWright",
-  "license": "ISC",
+  "author": "Sivasubramanyam A",
+  "license": "MIT",
   "bugs": {
-    "url": "https://github.com/tmcw/sitemap-static/issues"
+    "url": "https://github.com/astronomersiva/sitemap-static/issues"
   },
-  "homepage": "https://github.com/tmcw/sitemap-static",
+  "homepage": "https://github.com/astronomersiva/sitemap-static",
   "dependencies": {
     "findit": "~2.0.0",
     "minimist": "1.2.0"
