@@ -49,3 +49,15 @@ If you pass `--pretty` to the CLI (or `pretty: true` to the JS API), `sitemap-st
 | `http://www.example.com/about.html` | `http://www.example.com/about` |
 | `http://www.example.com/author/index.html` | `http://www.example.com/author` |
 | `http://www.example.com/author/main.html` | `http://www.example.com/author/main` |
+
+### addTrailingSlash
+
+If you pass this as `true` when `--pretty` is also true, a trailing slash will be added to the URLs.
+For example,
+
+| !addTrailingSlash | addTrailingSlash |
+| --- | --- |
+| `http://www.example.com/` | `http://www.example.com/` |
+| `http://www.example.com/about` | `http://www.example.com/about/` |
+| `http://www.example.com/author` | `http://www.example.com/author/` |
+| `http://www.example.com/author/main` | `http://www.example.com/author/main/` |

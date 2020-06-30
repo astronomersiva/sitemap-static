@@ -75,3 +75,25 @@ test('sitemap - three', function(t) {
     pretty: true
   });
 });
+
+test('sitemap - addTrailingSlash', function(t) {
+  sitemap(concat(function(res) {
+    if (process.env.UPDATE) {
+      fs.writeFileSync('fixtures/addTrailingSlash.xml', res);
+    }
+
+    let actual = fs.readFileSync('fixtures/addTrailingSlash.xml', 'utf8');
+    actual = actual.replace('LAST_MOD', new Date(fs.statSync('fixtures/three/about.html').mtime).toISOString());
+    actual = actual.replace('LAST_MOD', new Date(fs.statSync('fixtures/three/index.html').mtime).toISOString());
+    actual = actual.replace('LAST_MOD', new Date(fs.statSync('fixtures/three/author/main.html').mtime).toISOString());
+    actual = actual.replace('LAST_MOD', new Date(fs.statSync('fixtures/three/author/index.html').mtime).toISOString());
+
+    t.equal(res, actual);
+    t.end();
+  }), {
+    findRoot: 'fixtures/three/',
+    prefix: 'http://www.example.com/',
+    pretty: true,
+    addTrailingSlash: true
+  });
+});

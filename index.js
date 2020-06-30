@@ -19,6 +19,7 @@ function indent(level) {
 module.exports = function(stream, options) {
   const finder = findit(options.findRoot || '.');
   const prefix = options.prefix || '';
+  const addTrailingSlash = options.addTrailingSlash || false;
   const ignore_files = options.ignoreFiles || [];
   const pretty = options.pretty || false;
 
@@ -52,6 +53,10 @@ module.exports = function(stream, options) {
           path.dirname(filepath),
           path.basename(filepath, '.html')
         );
+      }
+
+      if (filepath.length && !filepath.endsWith('/') && addTrailingSlash) {
+        filepath = `${filepath}/`;
       }
     }
 

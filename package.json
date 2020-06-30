@@ -1,6 +1,6 @@
 {
   "name": "@astronomersiva/sitemap-static",
-  "version": "1.0.1",
+  "version": "1.1.0",
   "description": "generate a sitemap for a static website based on local files",
   "main": "index.js",
   "scripts": {
